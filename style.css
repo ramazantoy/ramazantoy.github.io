@@ -9,7 +9,7 @@ header {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh; /* Tüm ekranı kaplar */
+    height: 100vh;
     color: white;
     text-align: center;
     display: flex;
@@ -19,18 +19,18 @@ header {
 }
 
 .navbar-nav {
-    margin-left: auto; /* Menüyü sağ tarafa çeker */
+    margin-left: auto; 
 }
 .navbar {
-    background: transparent; /* Navbar'ı şeffaf yapıyoruz */
-    position: absolute; /* Üstte sabit durmasını sağlarız */
+    background: transparent; 
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
 }
 .navbar .navbar-brand {
-    color: black; /* Brand rengini siyah yapar */
+    color: black; 
 }
 .navbar .nav-link {
     color: black; 
