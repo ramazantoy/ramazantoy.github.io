@@ -29,18 +29,6 @@ header {
     right: 0;
     z-index: 1000;
 }
-.navbar .navbar-brand {
-    color: black; 
-}
-.navbar .nav-link {
-    color: black; 
-}
-.navbar .nav-link.active {
-    color: red; 
-}
-.navbar .nav-link:hover {
-    color: darkgray;
-}
 
 .container {
     margin-top: 150px; 
