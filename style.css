@@ -22,6 +22,7 @@ header {
     margin-left: auto; 
 }
 .navbar {
+    color: #000;
     background: transparent; 
     position: absolute;
     top: 0;
@@ -48,7 +49,9 @@ footer {
     background-color: #f1f1f1;
 }
 
-
+.navbar-dark .navbar-nav .nav-item.active .nav-link {
+    color: black; 
+}
 
 footer {
     background-color: #2F3E46; 
@@ -62,3 +65,18 @@ footer p {
     margin: 0; 
     font-size: 0.8rem; 
 }
+
+@media (max-width: 992px) {
+
+    .navbar-dark .navbar-nav .nav-link {
+        color: black;
+    }
+    .navbar-dark .navbar-toggler-icon {
+        background-color: black; 
+    }
+    .navbar-dark .navbar-nav .nav-item.active .nav-link {
+        color: black; 
+    }
+}
+
+   
