@@ -18,6 +18,9 @@ header {
     flex-direction: column;
 }
 
+.navbar-nav {
+    margin-left: auto; /* Menüyü sağ tarafa çeker */
+}
 .navbar {
     background: transparent; /* Navbar'ı şeffaf yapıyoruz */
     position: absolute; /* Üstte sabit durmasını sağlarız */
@@ -57,18 +60,6 @@ footer {
     background-color: #f1f1f1;
 }
 
-#projects {
-    padding: 40px 0;
-}
-
-#projects .d-flex {
-    margin-top: 20px; 
-}
-
-#projects iframe {
-    border: 2px solid #ccc; 
-    border-radius: 10px;
-}
 
 
 footer {
