@@ -1,0 +1,11 @@
+title: Dummy Page
+description: DummyGape
+theme: minima
+url: https://ramazantoy.github.io
+baseurl: ""
+author:
+  name: Ramazan Toy
+  email: dummy@mail.com
+social:
+  twitter: dummy
+  github: ramazantoy
