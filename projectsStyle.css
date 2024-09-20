@@ -1,21 +1,12 @@
 
-#projects {
-    background-image: url('assets/img/experience-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    padding: 60px 0;
-    color: rgb(0, 0, 0);
-    position: relative;
-}
+
 
 #projects .d-flex {
     margin-top: 20px; 
 }
 
 #projects iframe {
-    border: 2px solid #ccc; 
+    border: 2px solid #099962; 
     border-radius: 10px;
 }
 .project-card {
@@ -32,7 +23,6 @@
 
 .project-card .card-body {
     padding: 1.5rem;
-    color: #000;
 }
 
 .project-card .card-title {
