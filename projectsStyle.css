@@ -10,3 +10,39 @@
     border: 2px solid #ccc; 
     border-radius: 10px;
 }
+.project-card {
+    height: 100%;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.project-card .card-body {
+    padding: 1.5rem;
+}
+
+.project-card .card-title {
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+}
+
+.project-card .card-text {
+    color: #6c757d;
+}
+
+.project-card .card-footer {
+    background-color: transparent;
+    border-top: none;
+    padding: 0.75rem 1.5rem 1.5rem;
+}
+
+.project-card .card-img-top,
+.project-card .embed-responsive {
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
