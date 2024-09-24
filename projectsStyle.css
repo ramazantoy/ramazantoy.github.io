@@ -1,5 +1,5 @@
 #projects {
-    background-image: url('assets/img/experience-bg.jpg');
+    background-image: url('assets/img/projects-bg.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -21,7 +21,7 @@
 .project-card {
     height: 100%;
     border: none;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(172, 42, 42, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -53,4 +53,5 @@
 .project-card .embed-responsive {
     border-radius: 0.25rem;
     overflow: hidden;
+    color: #4cd12b;
 }
