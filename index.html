@@ -1,96 +1,70 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramazan Toy </title>
-    
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="experienceStyle.css">
-    <link rel="stylesheet" href="projectsStyle.css">
+    <title>Ramazan Toy</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/afoolasfallen.png">
 </head>
-<body>
-
+<body class="bg-gray-900 text-white  bg-gradient">
     <!-- Navbar -->
-   
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto"> 
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#about">About me</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#experience">Professional Experience</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#projects">Projects</a>
-                </li>
-            </ul>
+    <nav class="fixed w-full z-50 bg-gray-900 bg-opacity-90 backdrop-filter backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-xl font-bold">Ramazan Toy</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#about" class="nav-link px-3 py-2 text-sm font-medium">About</a>
+                        <a href="#experience" class="nav-link px-3 py-2 text-sm font-medium">Experience</a>
+                        <a href="#projects" class="nav-link px-3 py-2 text-sm font-medium">Projects</a>
+                        <a href="https://github.com/ramazantoy" class="nav-link px-3 py-2 text-sm font-medium">GitHub</a>
+                        <a href="https://linkedin.com/in/ramazantoy"class="nav-link px-3 py-2 text-sm font-medium" >LinkedIn</a>
+                        <a href="mailto:ramcotoy06@gmail.com" class="nav-link px-3 py-2 text-sm font-medium" > Email</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
-<!-- Header Section -->
-<header class="bg-primary text-center py-5" style="background-image: url('assets/img/header-bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh;">
-    <!-- Navbar -->
- 
-
-    <div class="container mt-5 text-center">
-
-    
-        <!-- Social Links -->
-        <div class="mt-3">
-            <a href="https://github.com/ramazantoy" target="_blank" class="text-white mr-3" style="font-size: 1.5rem;">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/ramazantoy" target="_blank" class="text-white  mr-3" style="font-size: 1.5rem;">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="mailto:ramcotoy06@gmail.com" class="text-white " style="font-size: 1.5rem;">
-                <i class="fas fa-envelope"></i> Email
-            </a>
-        </div>
-    </div>
-    
-</header>
-
-
     <!-- About Section -->
-    <section id="about" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-50 mx-auto">
-                    <h2 class="text-center mb-4">About Me</h2>
-                    <p class="text">
-                        As a software developer with 3 years of experience working at 4 different companies, I have specialized 
-                        in Unity and C#. I have developed hyper, hybrid, and idle mobile games using Unity. My technical skills 
-                        include C#, Java S.E, MSSQL, MVC, Entity Framework, and .NET Core Identity. My career goal is to 
-                        continue advancing in the C# domain, building upon my current expertise. I am adept at managing 
-                        multiple projects simultaneously and collaborating effectively with other developers. My experience 
-                        and skills enable me to utilize my knowledge efficiently, delivering high performance in all projects.
-                    </p>
-                </div>
+     
+    <section id="about" class="py-20 ">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold">About Me</h2>
+            </div>
+            <div class="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                <p class="text-gray-300 text-lg leading-relaxed">
+                    As a software developer with 3 years of experience working at 4 different companies, 
+                    I have specialized in Unity and C#. I have developed hyper, hybrid, and idle mobile games using Unity. 
+                    My technical skills include C#, Java S.E, MSSQL, MVC, Entity Framework, and .NET Core Identity.
+                </p>
             </div>
         </div>
     </section>
 
-
-    <section id="experience" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">PROFESSIONAL EXPERIENCE</h2>
-    
-            <!-- Paper Pigeon Games -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h4 class="card-title">Paper Pigeon Games, Istanbul <small>(Nov 2023 – May 2024)</small></h4>
-                    <h5 class="card-subtitle mb-2 text-muted">Game Developer</h5>
-                    <ul class="list">
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 relative">
+        <div class="absolute inset-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold">Professional Experience</h2>
+            </div>
+            <div class="space-y-8">
+                <!-- Paper Pigeon Games -->
+                <div class="experience-card rounded-lg p-6" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold">Paper Pigeon Games, Istanbul</h3>
+                            <p class="text-gray-400">Game Developer</p>
+                        </div>
+                        <span class="text-gray-400">Nov 2023 - May 2024</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
                         <li>Developed a comprehensive idle game called ‘Harvest’ using Unity.</li>
                         <li>Designed and integrated an in-app purchasing system.</li>
                         <li>Implemented AppLovin ad integration.</li>
@@ -100,41 +74,50 @@
                         <li>Added Unity Cloud and event tracking for actions such as daily login collection.</li>
                     </ul>
                 </div>
-            </div>
     
-            <!-- Cata Game Studios -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h4 class="card-title">Cata Game Studios, Istanbul <small>(Aug 2023 – Oct 2023)</small></h4>
-                    <h5 class="card-subtitle mb-2 text-muted">Game Developer</h5>
-                    <ul class="list">
+                <!-- Cata Game Studios -->
+                <div class="experience-card rounded-lg p-6" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold">Cata Game Studios, Istanbul</h3>
+                            <p class="text-gray-400">Game Developer</p>
+                        </div>
+                        <span class="text-gray-400">Aug 2023 - Oct 2023</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
                         <li>Developed hypercasual games for Supersonic using Unity.</li>
                         <li>Created various games for Roblox by learning Lua programming language.</li>
                         <li>Integrated necessary SDKs for tracking projects.</li>
                     </ul>
                 </div>
-            </div>
     
-            <!-- 2Moons Game Studio -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h4 class="card-title">2Moons Game Studio, Istanbul <small>(Sep 2022 – Jul 2023)</small></h4>
-                    <h5 class="card-subtitle mb-2 text-muted">Game Developer</h5>
-                    <ul class="list">
+                <!-- 2Moons Game Studio -->
+                <div class="experience-card rounded-lg p-6" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold">2Moons Game Studio, Istanbul</h3>
+                            <p class="text-gray-400">Game Developer</p>
+                        </div>
+                        <span class="text-gray-400">Sep 2022 - Jul 2023</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
                         <li>Developed hypercasual games for Sunday using Unity.</li>
                         <li>Worked on outsourced game projects for clients.</li>
                         <li>Managed the process of uploading games to the store.</li>
                         <li>Identified and solved errors in existing projects.</li>
                     </ul>
                 </div>
-            </div>
     
-            <!-- Midpoly Games -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h4 class="card-title">Midpoly Games, Istanbul <small>(Nov 2021 – Sep 2022)</small></h4>
-                    <h5 class="card-subtitle mb-2 text-muted">Jr. Game Developer</h5>
-                    <ul class="list">
+                <!-- Midpoly Games -->
+                <div class="experience-card rounded-lg p-6" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold">Midpoly Games, Istanbul</h3>
+                            <p class="text-gray-400">Jr. Game Developer</p>
+                        </div>
+                        <span class="text-gray-400">Nov 2021 - Sep 2022</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
                         <li>Developed hypercasual games for Rollic using Unity.</li>
                         <li>Designed and implemented game mechanics.</li>
                         <li>Improved team communication and workflow using project management tools.</li>
@@ -145,318 +128,255 @@
     </section>
     
 
-    <section id="projects" class="py-5" >
-        <div class="container" >
-            <h2 class="text-center text-white mb-5">Projects</h2>
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Projects</h2>
             
             <!-- Unity Projects -->
-            <h3 class="text-center  text-white mb-4">Unity Projects</h3>
-            <p class="text-center text-white">Gameplay videos of my unity projects. (Not all added)</p>
-            <div class="row">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">All Game Play Videos</h5>
-                            <p class="card-text">Gameplay mix video of my games.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/rLEsL8De7l4?si=ZuD5OvnRAl6ISwYS" allowfullscreen></iframe>
-                            </div>
-                        </div>
+            <h3 class="text-2xl font-semibold text-center mb-8">Unity Projects</h3>
+            <div class="project-grid">
+                <!-- Örnek Proje Kartı -->
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">All Game Play Videos</h4>
+                        <p class="text-gray-400 mb-4">Gameplay mix video of my games.</p>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Basket Stack</h5>
-                        </div>
-                        <div class="card-footer">
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/wX9Izp3KGOU?si=KgbaTZIKIJIxEiWP" allowfullscreen></iframe>
-                        </div>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/rLEsL8De7l4?si=ZuD5OvnRAl6ISwYS" allowfullscreen></iframe>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Elastic Gate</h5>
-                        </div>
-                        <div class="card-footer">
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/icYJtiaTQzk" allowfullscreen></iframe>
-                        </div>
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Basket Stack</h4>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Clicker Fish</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/VFWWV32eb90" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Gate Floor</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/Xh6rx-Ljt8E" allowfullscreen></iframe>
-                        </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/wX9Izp3KGOU?si=KgbaTZIKIJIxEiWP" allowfullscreen></iframe>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Hunger Stack</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/Qk_ems7A5uA?si=mMTxL27ARfxmvqM1" allowfullscreen></iframe>
-                        </div>
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Elastic Gate</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/icYJtiaTQzk" allowfullscreen></iframe>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Jumping Rush</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/ctdBIk6v-tM" allowfullscreen></iframe>
-                        </div>
+
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Clicker Fish</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/VFWWV32eb90" allowfullscreen></iframe>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Letter Tiles</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/QUehNQQ2wYE?si=WBK9PxkOWHIgpCL0" allowfullscreen></iframe>
-                        </div>
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Gate Floor</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/Xh6rx-Ljt8E" allowfullscreen></iframe>
                     </div>
                 </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Longest Pin</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/GAPua5GryfA?si=RZdlN8yUM8T3WZwe" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Money Bet</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/NnHYTiZHe-4?si=fxVlKXColv3FL0z8" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Orbital Hands</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/kjja0h732Qs?si=gSQbK3aE8QPrwo1U" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
                 
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Photo Shots</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/GlJouE4Bv3U?si=r5PzM7LWGS34sG9l" allowfullscreen></iframe>
-                        </div>
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Hunger Stack</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/Qk_ems7A5uA?si=mMTxL27ARfxmvqM1" allowfullscreen></iframe>
                     </div>
                 </div>
-
-        
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Rank It</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/KB5qaaVqFgE?si=7Gx9_DjUf5dKv0-A" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Pixel's Bet</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/gOJgHVr0o_A?si=VL8CKddHAISmQlEl" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Richer Hands</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/vz7hAfdjC0k?si=ltRAl080CytWWQ9N" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Recycle Management</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/D1Zv2Q0zWeI?si=z0PeAIoDgbBMsNrP" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Throw Gate</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/xpxU83av-c0?si=hn8T4l1ot0Abn-n_" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Hold And Number</h5>
-                            
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/Rj59igBERBM?si=bM7GEOZj7-l1kgj-" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
                 
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Swipe TD </h5>
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/qJ2o6HQp5hs?si=mYjBcKmrS7wZF4Ft" allowfullscreen></iframe>
-                        </div>
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Jumping Rush</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/ctdBIk6v-tM" allowfullscreen></iframe>
                     </div>
                 </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Crowd Loop </h5>
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/9fWnBeMhuc0?si=yUk0IJYmok8V9KFg" allowfullscreen></iframe>
-                        </div>
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Letter Tiles</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/QUehNQQ2wYE?si=WBK9PxkOWHIgpCL0" allowfullscreen></iframe>
                     </div>
                 </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Crowd Transfer </h5>
-                        </div>
-                        <div class="card-footer">
-                            
-                            <iframe class="embed-responsive-item" src="https://youtube.com/embed/9O3O4H2y7m4?si=4ZSeCjGH2K5G0vuS" allowfullscreen></iframe>
-                        </div>
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Longest Pin</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/GAPua5GryfA?si=RZdlN8yUM8T3WZwe" allowfullscreen></iframe>
                     </div>
                 </div>
-             
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Money Bet</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/NnHYTiZHe-4?si=fxVlKXColv3FL0z8" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Orbital Hands</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/kjja0h732Qs?si=gSQbK3aE8QPrwo1U" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Photo Shots</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/GlJouE4Bv3U?si=r5PzM7LWGS34sG9l" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Rank It</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/KB5qaaVqFgE?si=7Gx9_DjUf5dKv0-A" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Pixel's Bet</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/gOJgHVr0o_A?si=VL8CKddHAISmQlEl" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Richer Hands</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/vz7hAfdjC0k?si=ltRAl080CytWWQ9N" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Recycle Management</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/D1Zv2Q0zWeI?si=z0PeAIoDgbBMsNrP" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Throw Gate</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/xpxU83av-c0?si=hn8T4l1ot0Abn-n_" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Hold And Number</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/Rj59igBERBM?si=bM7GEOZj7-l1kgj-" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Swipe TD</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/qJ2o6HQp5hs?si=mYjBcKmrS7wZF4Ft" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Crowd Loop</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/9fWnBeMhuc0?si=yUk0IJYmok8V9KFg" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">Crowd Transfer</h4>
+                    </div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com/embed/9O3O4H2y7m4?si=4ZSeCjGH2K5G0vuS" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
             </div>
-    
+
             <!-- .NET Projects -->
-            <h3 class="text-center mb-4 mt-5">.NET Projects not edited</h3>
-            <div class="row">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">.NET Project 1</h5>
-                            <p class="card-text">Description of .NET Project 1. Explain the purpose and main features of the project.</p>
-                        </div>
-                        <div class="card-footer">
-                            
-                        </div>
+            <h3 class="text-2xl font-semibold text-center mt-20 mb-8">.NET Projects (Not added)</h3>
+            <div class="project-grid">
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">.NET Project 1</h4>
+                        <p class="text-gray-400">Description of .NET Project 1 (not edited)</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title">.NET Project 2</h5>
-                            <p class="card-text">Description of .NET Project 2. Mention the technologies and frameworks used.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                 
-                            </div>
-                        </div>
+
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">.NET Project 2</h4>
+                        <p class="text-gray-400">Description of .NET Project 2 (not edited)</p>
                     </div>
                 </div>
-                <!-- Add more .NET project cards as needed -->
+
+                <div class="project-item">
+                    <div class="p-4">
+                        <h4 class="text-xl font-semibold mb-2">.NET Project 3</h4>
+                        <p class="text-gray-400">Description of .NET Project 3 (not edited)</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-dark text-white">
-        <p>&copy; 2024 Ramazan Toy - All Rights Reserved</p> 
+    <footer class="bg-gray-800 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+            <p>© 2024 Ramazan Toy - All Rights Reserved</p>
+        </div>
     </footer>
-    
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
