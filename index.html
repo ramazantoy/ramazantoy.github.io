@@ -14,22 +14,44 @@
     <nav class="fixed w-full z-50 bg-gray-900 bg-opacity-90 backdrop-filter backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
+                
                 <div class="flex-shrink-0">
-                    <span class="text-xl font-bold">Ramazan Toy</span>
+                    <a href="#top" class="text-xl font-bold hidden md:block">Ramazan Toy</a> 
                 </div>
+    
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+    
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="#about" class="nav-link px-3 py-2 text-sm font-medium">About</a>
                         <a href="#experience" class="nav-link px-3 py-2 text-sm font-medium">Experience</a>
                         <a href="#projects" class="nav-link px-3 py-2 text-sm font-medium">Projects</a>
-                        <a href="https://github.com/ramazantoy" class="nav-link px-3 py-2 text-sm font-medium">GitHub</a>
-                        <a href="https://linkedin.com/in/ramazantoy"class="nav-link px-3 py-2 text-sm font-medium" >LinkedIn</a>
-                        <a href="mailto:ramcotoy06@gmail.com" class="nav-link px-3 py-2 text-sm font-medium" > Email</a>
+                        <a href="https://github.com/ramazantoy" class="nav-link px-3 py-2 text-sm font-medium" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://linkedin.com/in/ramazantoy" class="nav-link px-3 py-2 text-sm font-medium" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="mailto:ramcotoy06@gmail.com" class="nav-link px-3 py-2 text-sm font-medium">Email</a>
                     </div>
                 </div>
             </div>
+    
+            <!-- Mobil menü -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-white">About</a>
+                <a href="#experience" class="block px-3 py-2 text-base font-medium text-white">Experience</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-white">Projects</a>
+                <a href="https://github.com/ramazantoy" class="block px-3 py-2 text-base font-medium text-white" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/ramazantoy" class="block px-3 py-2 text-base font-medium text-white" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:ramcotoy06@gmail.com" class="block px-3 py-2 text-base font-medium text-white">Email</a>
+            </div>
         </div>
     </nav>
+    
+    
     <!-- About Section -->
      
     <section id="about" class="py-20 ">
@@ -364,6 +386,13 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+
+const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden'); 
+    });
         AOS.init({
             duration: 800,
             once: true
