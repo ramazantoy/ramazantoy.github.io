@@ -145,4 +145,27 @@
     background-color: #a323df;
 }
 
+body, html {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+   background: radial-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+    animation: float linear forwards;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--move-x), var(--move-y)) scale(0);
+        opacity: 0;
+    }
+}
 
