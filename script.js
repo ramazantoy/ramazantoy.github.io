@@ -1,51 +1,73 @@
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
+document.addEventListener('DOMContentLoaded', () => {
+    // Menü toggle işlevi
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-menuToggle?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-});
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
 
-AOS.init({
-    duration: 800,
-    once: true
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+    // AOS başlatma
+    AOS.init({
+        duration: 800,
+        once: true
     });
-});
 
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Top button işlevi
+    const topButton = document.querySelector('.top-button');
+    if (topButton) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                topButton.style.opacity = '1';
+            } else {
+                topButton.style.opacity = '0.8';
+            }
+        });
+
+        topButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Particle oluşturma
+    createParticles();
+});
 
 const createBubble = () => {
-const bubble = document.createElement('div');
-const size = Math.random() * 60 + 20;
+    const bubble = document.createElement('div');
+    const size = Math.random() * 60 + 20;
 
-bubble.classList.add('bubble');
-bubble.style.width = `${size}px`;
-bubble.style.height = `${size}px`;
-bubble.style.left = `${Math.random() * 100}vw`;
-bubble.style.top = `${Math.random() * 100}vh`;
+    bubble.classList.add('bubble');
+    bubble.style.width = `${size}px`;
+    bubble.style.height = `${size}px`;
+    bubble.style.left = `${Math.random() * 100}vw`;
+    bubble.style.top = '100vh';
 
+    bubble.style.animationDuration = `${Math.random() * 5 + 3}s`;
 
-const xMovement = `${(Math.random() - 0.5) * 100}vw`; 
-const yMovement = `${(Math.random() - 0.5) * 100}vh`; 
-bubble.style.setProperty('--move-x', xMovement);
-bubble.style.setProperty('--move-y', yMovement);
+    document.body.appendChild(bubble);
 
-bubble.style.animationDuration = `${Math.random() * 5 + 3}s`;
-
-document.body.appendChild(bubble);
-
-
-setTimeout(() => bubble.remove(), parseFloat(bubble.style.animationDuration) * 1000);
+    setTimeout(() => bubble.remove(), parseFloat(bubble.style.animationDuration) * 1000);
 };
 
 const bubbleDensity = 300; 
@@ -84,43 +106,6 @@ function createParticles() {
         particleContainer.appendChild(particle);
     }
 }
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    createParticles();
-});
-
-
-window.addEventListener('scroll', () => {
-    const topButton = document.querySelector('.top-button');
-    if (window.scrollY > 300) {
-        topButton.style.opacity = '1';
-    } else {
-        topButton.style.opacity = '0.8';
-    }
-});
-
-
-document.querySelector('.top-button').addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-const observerOptions = {
-    threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in-up');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
 
 
 document.querySelectorAll('.section-title').forEach(title => {
