@@ -1,124 +1,84 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Menü toggle işlevi
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const nav = document.getElementById('nav');
+    const toggle = document.getElementById('nav-toggle');
+    const navLinks = [...document.querySelectorAll('.nav__link')];
 
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
-
-    // AOS başlatma
-    AOS.init({
-        duration: 800,
-        once: true
+    // Tema butonu: seçim localStorage'da tutulur, ilk uygulama head'deki script'te
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+    const syncThemeLabel = () => {
+        const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+        themeToggle.setAttribute('aria-label', `Switch to ${next} mode`);
+    };
+    syncThemeLabel();
+    themeToggle.addEventListener('click', () => {
+        root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
+        try { localStorage.setItem('theme', root.dataset.theme); } catch (e) { }
+        syncThemeLabel();
     });
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
+    // Butonla seçim yapılmadıysa sistem teması değiştikçe izle
+    const storedTheme = () => { try { return localStorage.getItem('theme'); } catch (e) { return null; } };
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (storedTheme()) return;
+        root.dataset.theme = e.matches ? 'dark' : 'light';
+        syncThemeLabel();
     });
 
-    // Top button işlevi
-    const topButton = document.querySelector('.top-button');
-    if (topButton) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                topButton.style.opacity = '1';
-            } else {
-                topButton.style.opacity = '0.8';
-            }
+    // Mobil menü
+    const setMenuOpen = (open) => {
+        nav.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+    };
+    toggle.addEventListener('click', () => setMenuOpen(!nav.classList.contains('is-open')));
+    document.querySelectorAll('#nav-links a').forEach(link => link.addEventListener('click', () => setMenuOpen(false)));
+
+    // Scroll edilince nav arka planı
+    const updateNav = () => nav.classList.toggle('is-scrolled', window.scrollY > 40);
+    updateNav();
+    window.addEventListener('scroll', updateNav, { passive: true });
+
+    // Ekranın ortasındaki bölümün nav linkini işaretle
+    const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const id = `#${entry.target.id}`;
+            navLinks.forEach(link => link.classList.toggle('is-active', link.getAttribute('href') === id));
         });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('main > section[id]').forEach(section => sectionObserver.observe(section));
 
-        topButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+    // Görünür oldukça belirme
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
         });
-    }
+    }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // Particle oluşturma
-    createParticles();
-});
-
-const createBubble = () => {
-    const bubble = document.createElement('div');
-    const size = Math.random() * 60 + 20;
-
-    bubble.classList.add('bubble');
-    bubble.style.width = `${size}px`;
-    bubble.style.height = `${size}px`;
-    bubble.style.left = `${Math.random() * 100}vw`;
-    bubble.style.top = '100vh';
-
-    bubble.style.animationDuration = `${Math.random() * 5 + 3}s`;
-
-    document.body.appendChild(bubble);
-
-    setTimeout(() => bubble.remove(), parseFloat(bubble.style.animationDuration) * 1000);
-};
-
-const bubbleDensity = 300; 
-setInterval(createBubble, bubbleDensity);
-
-
-window.addEventListener('scroll', () => {
-    const nav = document.getElementById('mainNav');
-    if (window.scrollY > 50) {
-        nav.classList.add('bg-gray-900', 'bg-opacity-95', 'backdrop-blur-sm', 'shadow-lg');
-    } else {
-        nav.classList.remove('bg-gray-900', 'bg-opacity-95', 'backdrop-blur-sm', 'shadow-lg');
-    }
-});
-
-function createParticles() {
-    const particleContainer = document.querySelector('.particle-container');
-    
-    for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        
-        const size = Math.random() * 5 + 1;
-        const posX = Math.random() * 100;
-        const posY = Math.random() * 100;
-        const delay = Math.random() * 5;
-        
-        particle.style.cssText = `
-            width: ${size}px;
-            height: ${size}px;
-            left: ${posX}%;
-            top: ${posY}%;
-            animation-delay: ${delay}s;
-        `;
-        
-        particleContainer.appendChild(particle);
-    }
-}
-
-
-document.querySelectorAll('.section-title').forEach(title => {
-    observer.observe(title);
-});
-
-
-document.querySelectorAll('.experience-card, .project-item').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-5px)';
+    // Mobil oyunlar: "Show all" geri kalanları açar/kapatır
+    const videos = document.getElementById('videos');
+    const videosMore = document.getElementById('videos-more');
+    const gameCount = videos.querySelectorAll('.video:not(.video--wide)').length;
+    videosMore.addEventListener('click', () => {
+        const expanded = videos.classList.toggle('is-expanded');
+        videosMore.setAttribute('aria-expanded', String(expanded));
+        videosMore.textContent = expanded ? 'Show fewer' : `Show all ${gameCount} games`;
+        if (!expanded) document.getElementById('games').scrollIntoView({ block: 'start' });
     });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0)';
+
+    // YouTube oynatıcısı yalnız tıklanınca yüklenir (açılışta 21 iframe yüklenmesin)
+    document.querySelectorAll('[data-yt]').forEach(button => {
+        button.addEventListener('click', () => {
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube-nocookie.com/embed/${button.dataset.yt}?autoplay=1&rel=0`;
+            iframe.title = button.getAttribute('aria-label');
+            iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+            iframe.allowFullscreen = true;
+            iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+            button.replaceWith(iframe);
+        });
     });
 });

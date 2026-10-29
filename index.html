@@ -4,589 +4,643 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramazan Toy</title>
-    
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="./style.css">
-    
-    
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/afoolasfallen.png">
-    
+    <title>Ramazan Toy — Game Developer</title>
+    <meta name="description"
+        content="Game developer with 5 years of Unity and C# experience. Built most of the systems behind Tattoo Shop Simulator, out now on Steam.">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/afoolasfallen.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Zilla+Slab:wght@600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+    <script>
+        // Tema ilk boyamadan önce uygulanır (açılışta yanıp sönme olmasın).
+        // Butonla seçilmiş tema varsa o, yoksa sistem tercihi.
+        (function () {
+            var theme = null;
+            try { theme = localStorage.getItem('theme'); } catch (e) { }
+            if (theme !== 'light' && theme !== 'dark') {
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.dataset.theme = theme;
+            document.documentElement.classList.add('js');
+        })();
+    </script>
     <script src="./script.js" defer></script>
 </head>
 
-<body class="bg-gray-900 text-white  bg-gradient">
+<body>
+    <!-- Fırça kenarı filtresi (başlık altı çizgileri ve hero'daki mürekkep lekesi) -->
+    <svg class="defs" aria-hidden="true" focusable="false">
+        <filter id="brush" x="-4%" y="-80%" width="108%" height="260%" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.035 0.6" numOctaves="3" seed="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <filter id="brush-lg" x="-6%" y="-6%" width="112%" height="112%" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.18" numOctaves="3" seed="8" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="34" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </svg>
 
-    <nav class="fixed w-full z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="#" class="top-button">
-                    <i class="fas fa-home"></i>
-                </a>
+    <a class="skip-link" href="#about">Skip to content</a>
 
-                <div class="flex-1 flex justify-center">
-                    <div class="hidden md:block">
-                        <div class="flex items-baseline space-x-16">
-                            <a href="#about" class="nav-link px-3 py-2 text-base font-medium">About</a>
-                            <a href="#experience" class="nav-link px-3 py-2 text-base font-medium">Experience</a>
-                            <a href="#projects" class="nav-link px-3 py-2 text-base font-medium">Projects</a>
-                        </div>
+    <header class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="#top" class="nav__brand">Ramazan Toy</a>
+            <nav class="nav__links" id="nav-links" aria-label="Main">
+                <a href="#about" class="nav__link">About</a>
+                <a href="#experience" class="nav__link">Experience</a>
+                <a href="#projects" class="nav__link">Projects</a>
+                <a href="#games" class="nav__link">Mobile Games</a>
+                <a href="#contact" class="btn btn--primary btn--sm nav__cta">Contact</a>
+            </nav>
+            <div class="nav__actions">
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode">
+                    <i class="fas fa-sun" aria-hidden="true"></i>
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <button class="nav__toggle" id="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"
+                    aria-controls="nav-links">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero" id="top">
+            <div class="container hero__grid">
+                <div class="hero__text">
+                    <p class="eyebrow">Unity Game Developer</p>
+                    <h1 class="hero__title">Ramazan Toy</h1>
+                    <span class="brush-bar" aria-hidden="true"></span>
+                    <p class="hero__lead">
+                        5 years of building games with Unity and C#: from hyper-casual mobile titles to a PC release on
+                        Steam.
+                    </p>
+                    <div class="hero__actions">
+                        <a class="btn btn--primary" href="#projects">View projects</a>
+                        <a class="btn btn--ghost" href="#contact">Get in touch</a>
+                    </div>
+                    <div class="social">
+                        <a href="https://github.com/ramazantoy" target="_blank" rel="noopener" aria-label="GitHub"><i
+                                class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/ramazantoy" target="_blank" rel="noopener"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:ramcotoy06@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
 
-                <div class="md:hidden">
-                    <button id="menu-toggle" class="text-white focus:outline-none">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
-                </div>
+                <figure class="hero__art">
+                    <div class="hero__art-media">
+                        <a class="hero__art-frame" href="https://store.steampowered.com/app/4236450/" target="_blank"
+                            rel="noopener">
+                            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4236450/65789dac90b321854a932978445cd34a058eda78/capsule_616x353.jpg"
+                                alt="Tattoo Shop Simulator key art" width="616" height="353" fetchpriority="high">
+                        </a>
+                    </div>
+                    <figcaption>
+                        <span class="eyebrow">Latest release</span>
+                        <a href="https://store.steampowered.com/app/4236450/" target="_blank" rel="noopener"
+                            class="text-link">Tattoo Shop Simulator</a> — out now on Steam
+                    </figcaption>
+                </figure>
             </div>
+        </section>
 
-            <div id="mobile-menu" class="hidden md:hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="#about" class="nav-link block px-3 py-2 text-base font-medium">About</a>
-                    <a href="#experience" class="nav-link block px-3 py-2 text-base font-medium">Experience</a>
-                    <a href="#projects" class="nav-link block px-3 py-2 text-base font-medium">Projects</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <section class="hero min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="particle-container"></div>
-        </div>
-        <div class="container mx-auto px-4 z-10 text-center">
-            <div class="space-y-6" data-aos="fade-up">
-                <h1 class="text-5xl md:text-7xl font-bold gradient-text">Ramazan Toy</h1>
-                <p class="text-xl md:text-2xl text-gray-300">Game Developer & Software Engineer</p>
-                <div class="flex justify-center space-x-4">
-                    <a href="https://github.com/ramazantoy" class="social-link github" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/ramazantoy" class="social-link linkedin" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="mailto:ramcotoy06@gmail.com" class="social-link email" target="_blank">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-                <div class="mt-8">
-                    <a href="#about" class="scroll-down-btn">
-                        <i class="fas fa-chevron-down animate-bounce"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-3xl font-bold section-title">About Me</h2>
-            </div>
-            <div class="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-                <!-- Ana tanıtım kartı -->
-                <div class="glass-card p-8 mb-10 text-center">
-                    <p class="text-lg leading-relaxed text-gray-300">
-                        As a software developer with 3 years of experience working at 4 different companies, I have specialized in Unity and C#. 
-                        I have developed hyper, hybrid, and idle mobile games using Unity.
-                         My technical skills include C#, Java S.E, MSSQL, MVC, Entity Framework, and .NET Core Identity.
+        <!-- About -->
+        <section class="section" id="about">
+            <div class="container about">
+                <div class="about__text reveal">
+                    <h2 class="section-title">About</h2>
+                    <p class="lead">
+                        Game developer with 5 years of professional experience in Unity and C# across five studios.
+                        I started out shipping hyper-casual, hybrid and idle mobile games, and now work on PC:
+                        at Old Stuff Studio I built most of the systems behind
+                        <a href="https://store.steampowered.com/app/4236450/" target="_blank" rel="noopener"
+                            class="text-link">Tattoo Shop Simulator</a>, released on Steam in 2026.
+                        Before that, I always worked in cross-functional teams of three or more, alongside game
+                        designers and 3D artists.
+                    </p>
+                    <p>
+                        I focus on maintainable, scalable game systems: clean architecture with dependency injection and
+                        event-driven design, save data that survives live updates, and performance-conscious code on hot
+                        paths. Alongside mobile titles with monetization and analytics integration, I have taken a PC game
+                        from development to Steam release, including platform integration and post-launch support, and I
+                        build Unity editor tooling and build automation to streamline development.
                     </p>
                 </div>
 
-                <!-- Skills grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Core Competencies -->
-                    <div class="glass-card p-6 skill-card" data-aos="fade-right">
-                        <div class="card-header mb-6">
-                            <i class="fas fa-code text-gradient text-2xl mb-4"></i>
-                            <h3 class="text-xl font-semibold text-white">Core Competencies</h3>
+                <aside class="card skills reveal" aria-label="Skills">
+                    <h3 class="card__heading"><i class="fas fa-gamepad"></i>Engine &amp; language</h3>
+                    <ul class="tags">
+                        <li>C#</li>
+                        <li>Unity</li>
+                        <li>URP</li>
+                        <li>Input System</li>
+                        <li>Addressables</li>
+                        <li>Localization</li>
+                        <li>NavMesh</li>
+                    </ul>
+
+                    <h3 class="card__heading"><i class="fas fa-layer-group"></i>Architecture</h3>
+                    <ul class="tags">
+                        <li>Zenject / Extenject</li>
+                        <li>SignalBus</li>
+                        <li>UniTask</li>
+                        <li>DOTween</li>
+                        <li>Object pooling</li>
+                        <li>State machines</li>
+                    </ul>
+
+                    <h3 class="card__heading"><i class="fab fa-steam"></i>Platforms &amp; services</h3>
+                    <ul class="tags">
+                        <li>Steamworks</li>
+                        <li>Steam Deck</li>
+                        <li>Android</li>
+                        <li>In-app purchases</li>
+                        <li>AppLovin</li>
+                        <li>Unity Analytics</li>
+                    </ul>
+
+                    <h3 class="card__heading"><i class="fas fa-tools"></i>Tooling</h3>
+                    <ul class="tags">
+                        <li>Unity editor tools</li>
+                        <li>Build automation</li>
+                        <li>Git</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="section section--alt" id="experience">
+            <div class="container">
+                <h2 class="section-title reveal">Experience</h2>
+
+                <ol class="timeline">
+                    <li class="job job--current reveal">
+                        <div class="job__meta">
+                            <p class="job__date">Jan 2025 — Present</p>
+                            <p class="job__place">Ankara · Remote</p>
                         </div>
-                        <ul class="space-y-3">
-                            <li class="skill-item">
-                                <i class="fas fa-gamepad text-blue-400"></i>
-                                <span>Game Development with Unity Engine</span>
-                            </li>
-                            <li class="skill-item">
-                                <i class="fas fa-mobile-alt text-blue-400"></i>
-                                <span>Mobile Game Development</span>
-                            </li>
-                            <li class="skill-item">
-                                <i class="fas fa-layer-group text-blue-400"></i>
-                                <span>Software Architecture & Design Patterns</span>
-                            </li>
-                            <li class="skill-item">
-                                <i class="fas fa-desktop text-blue-400"></i>
-                                <span>Cross-platform Development</span>
-                            </li>
-                            <li class="skill-item">
-                                <i class="fas fa-tachometer-alt text-blue-400"></i>
-                                <span>Performance Optimization</span>
-                            </li>
+                        <div class="job__body">
+                            <h3 class="job__company">Old Stuff Studio</h3>
+                            <p class="job__role">Game Developer</p>
+                            <ul class="bullets">
+                                <li>Built most of the gameplay and core systems of
+                                    <a href="https://store.steampowered.com/app/4236450/" target="_blank"
+                                        rel="noopener" class="text-link">Tattoo Shop Simulator</a>, a PC simulation
+                                    game released on Steam in September 2026 (Steam Deck Verified).</li>
+                                <li>Designed a modular architecture on Zenject dependency injection, SignalBus events and
+                                    UniTask async flows.</li>
+                                <li>Built a slot-based save system with backward-compatible, silent migration to keep
+                                    live player saves working across post-launch updates.</li>
+                                <li>Developed the NPC simulation: NavMesh-driven customers, shop workers and ambient city
+                                    crowds, with pooled, modular character builds and wardrobes.</li>
+                                <li>Implemented Unity Input System support with seamless keyboard/mouse and gamepad
+                                    switching and key rebinding.</li>
+                                <li>Set up Steamworks integration and full / demo / prologue build flavors shipped from a
+                                    single codebase.</li>
+                                <li>Built the localization pipeline with Unity Localization and Addressables for 29
+                                    languages.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="job reveal">
+                        <div class="job__meta">
+                            <p class="job__date">Nov 2023 — May 2024</p>
+                            <p class="job__place">Istanbul</p>
+                        </div>
+                        <div class="job__body">
+                            <h3 class="job__company">Paper Pigeon Games</h3>
+                            <p class="job__role">Game Developer</p>
+                            <ul class="bullets">
+                                <li>Developed ‘Harvest’, an idle mobile game, alongside a game designer and 3D artists.
+                                </li>
+                                <li>Built its monetization and engagement layer as reusable modules: in-app purchases,
+                                    AppLovin ads, daily rewards, a reward wheel, local notifications and Unity Cloud
+                                    event tracking.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="job reveal">
+                        <div class="job__meta">
+                            <p class="job__date">Aug 2023 — Oct 2023</p>
+                            <p class="job__place">Istanbul</p>
+                        </div>
+                        <div class="job__body">
+                            <h3 class="job__company">Cata Game Studios</h3>
+                            <p class="job__role">Game Developer</p>
+                            <ul class="bullets">
+                                <li>Prototyped hyper-casual games for publisher Supersonic and integrated its tracking
+                                    SDKs.</li>
+                                <li>Built several Roblox games in Lua.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="job reveal">
+                        <div class="job__meta">
+                            <p class="job__date">Sep 2022 — Jul 2023</p>
+                            <p class="job__place">Istanbul</p>
+                        </div>
+                        <div class="job__body">
+                            <h3 class="job__company">2Moons Game Studio</h3>
+                            <p class="job__role">Game Developer</p>
+                            <ul class="bullets">
+                                <li>Developed hyper-casual games for publisher Sunday, plus outsourced projects for
+                                    clients.</li>
+                                <li>Managed store releases and fixed issues in existing projects.</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="job reveal">
+                        <div class="job__meta">
+                            <p class="job__date">Nov 2021 — Sep 2022</p>
+                            <p class="job__place">Istanbul</p>
+                        </div>
+                        <div class="job__body">
+                            <h3 class="job__company">Midpoly Games</h3>
+                            <p class="job__role">Jr. Game Developer</p>
+                            <ul class="bullets">
+                                <li>Developed hyper-casual games for publisher Rollic, designing and implementing their
+                                    core mechanics.</li>
+                                <li>Improved team workflow with project management tools.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="section" id="projects">
+            <div class="container">
+                <h2 class="section-title reveal">Projects</h2>
+
+                <article class="feature card reveal">
+                    <div class="feature__gallery">
+                        <a class="feature__main" href="https://store.steampowered.com/app/4236450/" target="_blank"
+                            rel="noopener" tabindex="-1" aria-hidden="true">
+                            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4236450/89c1a6f88e1ea8e97e267b8ee88368734cd2ddf6/ss_89c1a6f88e1ea8e97e267b8ee88368734cd2ddf6.1920x1080.jpg"
+                                alt="" width="1920" height="1080" loading="lazy">
+                        </a>
+                        <div class="feature__thumbs" aria-hidden="true">
+                            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4236450/2960936e6ad9360ebe72501431dd8abd0a26dac2/ss_2960936e6ad9360ebe72501431dd8abd0a26dac2.600x338.jpg"
+                                alt="" width="600" height="338" loading="lazy">
+                            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4236450/1f2dd6fe87549b9381da87d1c312317c61420783/ss_1f2dd6fe87549b9381da87d1c312317c61420783.600x338.jpg"
+                                alt="" width="600" height="338" loading="lazy">
+                            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4236450/bcedc684bc64378f8f939767e0f9e41aefc6f352/ss_bcedc684bc64378f8f939767e0f9e41aefc6f352.600x338.jpg"
+                                alt="" width="600" height="338" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="feature__body">
+                        <p class="eyebrow eyebrow--red">Shipped · Steam · 2026</p>
+                        <h3 class="feature__title">Tattoo Shop Simulator</h3>
+                        <p>
+                            PC simulation game shipped at Old Stuff Studio: run a tattoo shop in a living open city,
+                            provide tattoo and piercing services, manage staff and grow into the city's biggest brand.
+                        </p>
+                        <ul class="tags">
+                            <li>Zenject</li>
+                            <li>SignalBus</li>
+                            <li>UniTask</li>
+                            <li>NavMesh NPCs</li>
+                            <li>Live-safe saves</li>
+                            <li>Steamworks</li>
+                            <li>Steam Deck Verified</li>
                         </ul>
+                        <a class="btn btn--primary" href="https://store.steampowered.com/app/4236450/" target="_blank"
+                            rel="noopener"><i class="fab fa-steam"></i>View on Steam</a>
                     </div>
+                </article>
 
-                    <!-- Technical Skills -->
-                    <div class="glass-card p-6 skill-card" data-aos="fade-left">
-                        <div class="card-header mb-6">
-                            <i class="fas fa-tools text-gradient text-2xl mb-4"></i>
-                            <h3 class="text-xl font-semibold text-white">Technical Skills</h3>
-                        </div>
-                        <div class="grid grid-cols-2 gap-6">
-                            <div>
-                                <h4 class="font-medium text-white mb-3 flex items-center">
-                                    <i class="fas fa-code text-blue-400 mr-2"></i>
-                                    Languages
-                                </h4>
-                                <ul class="space-y-2">
-                                    <li class="tech-badge">C#</li>
-                                    <li class="tech-badge">Java SE</li>
-                                    <li class="tech-badge">Python</li>
-                                    <li class="tech-badge">Lua</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-white mb-3 flex items-center">
-                                    <i class="fas fa-cogs text-blue-400 mr-2"></i>
-                                    Technologies
-                                </h4>
-                                <ul class="space-y-2">
-                                    <li class="tech-badge">Unity3D</li>
-                                    <li class="tech-badge">.NET Core</li>
-                                    <li class="tech-badge">MSSQL</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Professional Focus -->
-                <div class="glass-card p-6 mt-6" data-aos="fade-up">
-                    <div class="card-header mb-6">
-                        <i class="fas fa-bullseye text-gradient text-2xl mb-4"></i>
-                        <h3 class="text-xl font-semibold text-white">Professional Focus</h3>
-                    </div>
-                    <p class="text-gray-300 leading-relaxed">
-                        My expertise lies in developing engaging mobile games, with a particular focus on creating optimized and scalable solutions. 
-                        I have successfully delivered multiple projects across different genres, implementing various gameplay mechanics, 
-                        monetization systems, and analytics integration. Beyond game development, I'm also experienced in building backend 
-                        services and automation tools to streamline development processes.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 relative">
-        <div class="absolute inset-0"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-3xl font-bold section-title">Professional Experience</h2>
-            </div>
-            <div class="space-y-8">
-                <!-- Paper Pigeon Games -->
-                <div class="experience-card rounded-lg p-6" data-aos="fade-up">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold">Paper Pigeon Games, Istanbul</h3>
-                            <p class="text-gray-400">Game Developer</p>
-                        </div>
-                        <span class="text-gray-400">Nov 2023 - May 2024</span>
-                    </div>
-                    <ul class="list-disc list-inside text-gray-300 space-y-2">
-                        <li>Developed a comprehensive idle game called ‘Harvest’ using Unity.</li>
-                        <li>Designed and integrated an in-app purchasing system.</li>
-                        <li>Implemented AppLovin ad integration.</li>
-                        <li>Added features like daily rewards and a wheel system to increase user engagement.</li>
-                        <li>Created generic structures that can be reused in other projects.</li>
-                        <li>Implemented a locally working notification system.</li>
-                        <li>Added Unity Cloud and event tracking for actions such as daily login collection.</li>
-                    </ul>
-                </div>
-
-                <!-- Cata Game Studios -->
-                <div class="experience-card rounded-lg p-6" data-aos="fade-up">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold">Cata Game Studios, Istanbul</h3>
-                            <p class="text-gray-400">Game Developer</p>
-                        </div>
-                        <span class="text-gray-400">Aug 2023 - Oct 2023</span>
-                    </div>
-                    <ul class="list-disc list-inside text-gray-300 space-y-2">
-                        <li>Developed hypercasual games for Supersonic using Unity.</li>
-                        <li>Created various games for Roblox by learning Lua programming language.</li>
-                        <li>Integrated necessary SDKs for tracking projects.</li>
-                    </ul>
-                </div>
-
-                <!-- 2Moons Game Studio -->
-                <div class="experience-card rounded-lg p-6" data-aos="fade-up">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold">2Moons Game Studio, Istanbul</h3>
-                            <p class="text-gray-400">Game Developer</p>
-                        </div>
-                        <span class="text-gray-400">Sep 2022 - Jul 2023</span>
-                    </div>
-                    <ul class="list-disc list-inside text-gray-300 space-y-2">
-                        <li>Developed hypercasual games for Sunday using Unity.</li>
-                        <li>Worked on outsourced game projects for clients.</li>
-                        <li>Managed the process of uploading games to the store.</li>
-                        <li>Identified and solved errors in existing projects.</li>
-                    </ul>
-                </div>
-
-                <!-- Midpoly Games -->
-                <div class="experience-card rounded-lg p-6" data-aos="fade-up">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold">Midpoly Games, Istanbul</h3>
-                            <p class="text-gray-400">Jr. Game Developer</p>
-                        </div>
-                        <span class="text-gray-400">Nov 2021 - Sep 2022</span>
-                    </div>
-                    <ul class="list-disc list-inside text-gray-300 space-y-2">
-                        <li>Developed hypercasual games for Rollic using Unity.</li>
-                        <li>Designed and implemented game mechanics.</li>
-                        <li>Improved team communication and workflow using project management tools.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section id="projects" class="py-20">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-3xl font-bold section-title">Projects</h2>
-            </div>
-            <!-- Projects -->
-            <div class="project-grid">
-
-                <!-- Hydra Tagger Bot -->
-                <div class="project-item">
-                    <div class="p-4 flex-grow">
-                        <h4 class="text-xl font-semibold mb-2">Hydra Tagger Bot (Telegram)</h4>
-                        <a href="https://github.com/ramazantoy/HydraTaggerBot" target="_blank" class="project-link">
-                            View on GitHub
-                        </a>
-                        <p class="text-gray-400 mt-2">
-                            Hydra Tagger Bot is designed to manage and enhance the experience
-                            of tagging members in your group. With various commands,
-                            you can perform different tagging actions, get daily horoscope readings, and more.
+                <h3 class="subhead reveal">Case studies &amp; tech demos</h3>
+                <div class="cards">
+                    <article class="card project reveal">
+                        <img class="project__media" src="./assets/img/projects/archery.jpg" alt="" width="960"
+                            height="540" loading="lazy">
+                        <p class="eyebrow">Case study · Unity · C#</p>
+                        <h4 class="project__title">Archery Action Game</h4>
+                        <p class="project__text">
+                            Built on SOLID principles: Zenject dependency injection, a player state machine with
+                            cancellable async attacks, pooled modular arrows and enemies, and random map generation.
                         </p>
-                    </div>
-                    <div class="language-container">
-                        <span class="language-badge language-python">python</span>
-                    </div>
-                </div>
+                        <a class="project__link" href="https://github.com/ramazantoy/HappyHourCase" target="_blank"
+                            rel="noopener">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                    </article>
 
-                <!-- Discord Bot Core -->
-                <div class="project-item">
-                    <div class="p-4 flex-grow">
-                        <h4 class="text-xl font-semibold mb-2">My Discord Bot Core</h4>
-                        <a href="https://github.com/ramazantoy/MyDiscordBotCore" target="_blank" class="project-link">
-                            View on GitHub
-                        </a>
-                        <p class="text-gray-400 mt-2">
-                            DiscordBotCore is a customizable Discord bot developed with .NET 6
-                            and designed to support multiple servers.
-                            It integrates seamlessly with MySQL for efficient server and settings management.
+                    <article class="card project reveal">
+                        <img class="project__media" src="./assets/img/projects/dice-board.jpg" alt="" width="960"
+                            height="540" loading="lazy">
+                        <p class="eyebrow">Case study · Joker Games</p>
+                        <h4 class="project__title">Dice Board Game</h4>
+                        <p class="project__text">
+                            Board game with a UniTask-driven move queue and DOTween animations, chosen or random dice
+                            rolls, fast auto-rolling and map reloading.
                         </p>
-                    </div>
-                    <div class="language-container">
-                        <span class="language-badge language-csharp">c#</span>
-                    </div>
-                </div>
+                        <a class="project__link" href="https://github.com/ramazantoy/JokerGameCase" target="_blank"
+                            rel="noopener">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                    </article>
 
-                <!-- Asp NetCore Tutorial Area -->
-                <div class="project-item">
-                    <div class="p-4 flex-grow">
-                        <h4 class="text-xl font-semibold mb-2">Asp NetCore Tutorial Area</h4>
-                        <a href="https://github.com/ramazantoy/AspNetCoreTutorialArea" target="_blank" class="project-link">
-                            View on GitHub
-                        </a>
-                        <p class="text-gray-400 mt-2">
-                            Educational dummy projects created to learn and practice backend development using
-                            .NET Core, focusing on foundational concepts and hands-on implementation.
+                    <article class="card project reveal">
+                        <img class="project__media" src="./assets/img/projects/frog-puzzle.jpg" alt="" width="960"
+                            height="540" loading="lazy">
+                        <p class="eyebrow">Case study · Funrado</p>
+                        <h4 class="project__title">Hex Frog Puzzle</h4>
+                        <p class="project__text">
+                            Level-based hex tile puzzle with a move limit, built with UniTask and DOTween.
                         </p>
-                    </div>
-                    <div class="language-container">
-                        <span class="language-badge language-csharp">c#</span>
-                    </div>
-                </div>
+                        <a class="project__link" href="https://github.com/ramazantoy/FrogGameCaseStudy" target="_blank"
+                            rel="noopener">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                    </article>
 
-                <!-- HP Bar System -->
-                <div class="project-item">
-                    <div class="p-4 flex-grow">
-                        <h4 class="text-xl font-semibold mb-2">Hp bar system for RedM</h4>
-                        <a href="https://github.com/ramazantoy/asfallen-hpbar" target="_blank" class="project-link">
-                            View on GitHub
-                        </a>
-                        <p class="text-gray-400 mt-2">
-                            This is a lightweight and visually appealing health bar system for RedM. 
-                            It displays health bars above players' heads, providing a clear and dynamic indication of their health status.
-                            The health bar adapts in real-time to changes in health levels, transitioning smoothly between colors.
+                    <article class="card project reveal">
+                        <img class="project__media" src="./assets/img/projects/snow-trail.jpg" alt="" width="960"
+                            height="540" loading="lazy">
+                        <p class="eyebrow">Tech demo · Shader</p>
+                        <h4 class="project__title">Snow Trail Shader</h4>
+                        <p class="project__text">
+                            Deformable snow trail effect built with a custom surface shader, tested on Android devices.
                         </p>
-                    </div>
-                    <div class="language-container">
-                        <span class="language-badge language-lua">lua</span>
-                    </div>
+                        <a class="project__link" href="https://github.com/ramazantoy/WalkingOnSnowUnity"
+                            target="_blank" rel="noopener">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                    </article>
                 </div>
-
-                <!-- Weapon Menu System -->
-                <div class="project-item">
-                    <div class="p-4 flex-grow">
-                        <h4 class="text-xl font-semibold mb-2">Weapon menu system for RedM</h4>
-                        <a href="https://github.com/ramazantoy/asfallen-weaponmenu" target="_blank" class="project-link">
-                            View on GitHub
-                        </a>
-                        <p class="text-gray-400 mt-2">
-                            An advanced weapon and ammo menu system designed for RedM servers, built on the VORP Core framework.
-                            This system provides seamless integration for managing and equipping weapons and ammunition efficiently.
-                        </p>
-                    </div>
-                    <div class="language-container">
-                        <span class="language-badge language-lua">lua</span>
-                    </div>
-                </div>
-
-         
-         
-
             </div>
+        </section>
 
+        <!-- Mobile Games -->
+        <section class="section section--alt" id="games">
+            <div class="container">
+                <h2 class="section-title reveal">Mobile Games</h2>
+                <p class="section-intro reveal">Mobile games I developed with Unity at hyper-casual and idle studios.
+                    Select a card to play its gameplay video.</p>
 
-            <h3 class="text-2xl font-semibold text-center mb-8">Unity Projects</h3>
-            <h4 class="text-center">Not all added.</h4>
-            <div class="project-grid">
+                <div class="videos" id="videos">
+                    <figure class="card video video--wide reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="rLEsL8De7l4"
+                                aria-label="Play video: Gameplay Mix">
+                                <img src="https://i.ytimg.com/vi/rLEsL8De7l4/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Gameplay Mix<span>A mix of my mobile games in one video</span></figcaption>
+                    </figure>
 
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">All Game Play Videos</h4>
-                        <p class="text-gray-400 mb-4">Gameplay mix video of my games.</p>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/rLEsL8De7l4?si=ZuD5OvnRAl6ISwYS"
-                            allowfullscreen></iframe>
-                    </div>
+                    <figure class="card video reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="wX9Izp3KGOU"
+                                aria-label="Play video: Basket Stack">
+                                <img src="https://i.ytimg.com/vi/wX9Izp3KGOU/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Basket Stack</figcaption>
+                    </figure>
+
+                    <figure class="card video reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="icYJtiaTQzk"
+                                aria-label="Play video: Elastic Gate">
+                                <img src="https://i.ytimg.com/vi/icYJtiaTQzk/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Elastic Gate</figcaption>
+                    </figure>
+
+                    <figure class="card video reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="VFWWV32eb90"
+                                aria-label="Play video: Clicker Fish">
+                                <img src="https://i.ytimg.com/vi/VFWWV32eb90/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Clicker Fish</figcaption>
+                    </figure>
+
+                    <figure class="card video reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="Xh6rx-Ljt8E"
+                                aria-label="Play video: Gate Floor">
+                                <img src="https://i.ytimg.com/vi/Xh6rx-Ljt8E/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Gate Floor</figcaption>
+                    </figure>
+
+                    <figure class="card video reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="Qk_ems7A5uA"
+                                aria-label="Play video: Hunger Stack">
+                                <img src="https://i.ytimg.com/vi/Qk_ems7A5uA/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Hunger Stack</figcaption>
+                    </figure>
+
+                    <figure class="card video reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="ctdBIk6v-tM"
+                                aria-label="Play video: Jumping Rush">
+                                <img src="https://i.ytimg.com/vi/ctdBIk6v-tM/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Jumping Rush</figcaption>
+                    </figure>
+
+                    <figure class="card video reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="QUehNQQ2wYE"
+                                aria-label="Play video: Letter Tiles">
+                                <img src="https://i.ytimg.com/vi/QUehNQQ2wYE/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Letter Tiles</figcaption>
+                    </figure>
+
+                    <figure class="card video reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="GAPua5GryfA"
+                                aria-label="Play video: Longest Pin">
+                                <img src="https://i.ytimg.com/vi/GAPua5GryfA/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Longest Pin</figcaption>
+                    </figure>
+
+                    <figure class="card video video--extra reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="NnHYTiZHe-4"
+                                aria-label="Play video: Money Bet">
+                                <img src="https://i.ytimg.com/vi/NnHYTiZHe-4/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Money Bet</figcaption>
+                    </figure>
+
+                    <figure class="card video video--extra reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="kjja0h732Qs"
+                                aria-label="Play video: Orbital Hands">
+                                <img src="https://i.ytimg.com/vi/kjja0h732Qs/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Orbital Hands</figcaption>
+                    </figure>
+
+                    <figure class="card video video--extra reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="GlJouE4Bv3U"
+                                aria-label="Play video: Photo Shots">
+                                <img src="https://i.ytimg.com/vi/GlJouE4Bv3U/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Photo Shots</figcaption>
+                    </figure>
+
+                    <figure class="card video video--extra reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="KB5qaaVqFgE"
+                                aria-label="Play video: Rank It">
+                                <img src="https://i.ytimg.com/vi/KB5qaaVqFgE/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Rank It</figcaption>
+                    </figure>
+
+                    <figure class="card video video--extra reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="gOJgHVr0o_A"
+                                aria-label="Play video: Pixel's Bet">
+                                <img src="https://i.ytimg.com/vi/gOJgHVr0o_A/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Pixel's Bet</figcaption>
+                    </figure>
+
+                    <figure class="card video video--extra reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="vz7hAfdjC0k"
+                                aria-label="Play video: Richer Hands">
+                                <img src="https://i.ytimg.com/vi/vz7hAfdjC0k/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Richer Hands</figcaption>
+                    </figure>
+
+                    <figure class="card video video--extra reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="D1Zv2Q0zWeI"
+                                aria-label="Play video: Recycle Management">
+                                <img src="https://i.ytimg.com/vi/D1Zv2Q0zWeI/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Recycle Management</figcaption>
+                    </figure>
+
+                    <figure class="card video video--extra reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="xpxU83av-c0"
+                                aria-label="Play video: Throw Gate">
+                                <img src="https://i.ytimg.com/vi/xpxU83av-c0/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Throw Gate</figcaption>
+                    </figure>
+
+                    <figure class="card video video--extra reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="Rj59igBERBM"
+                                aria-label="Play video: Hold And Number">
+                                <img src="https://i.ytimg.com/vi/Rj59igBERBM/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Hold And Number</figcaption>
+                    </figure>
+
+                    <figure class="card video video--extra reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="qJ2o6HQp5hs"
+                                aria-label="Play video: Swipe TD">
+                                <img src="https://i.ytimg.com/vi/qJ2o6HQp5hs/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Swipe TD</figcaption>
+                    </figure>
+
+                    <figure class="card video video--extra reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="9fWnBeMhuc0"
+                                aria-label="Play video: Crowd Loop">
+                                <img src="https://i.ytimg.com/vi/9fWnBeMhuc0/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Crowd Loop</figcaption>
+                    </figure>
+
+                    <figure class="card video video--extra reveal">
+                        <div class="video__frame">
+                            <button class="video__btn" type="button" data-yt="9O3O4H2y7m4"
+                                aria-label="Play video: Crowd Transfer">
+                                <img src="https://i.ytimg.com/vi/9O3O4H2y7m4/hqdefault.jpg" alt="" loading="lazy">
+                                <span class="video__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </button>
+                        </div>
+                        <figcaption>Crowd Transfer</figcaption>
+                    </figure>
                 </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Basket Stack</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/wX9Izp3KGOU?si=KgbaTZIKIJIxEiWP"
-                            allowfullscreen></iframe>
-                    </div>
+                <div class="videos__more">
+                    <button class="btn btn--ghost" id="videos-more" type="button" aria-expanded="false"
+                        aria-controls="videos">Show all 20 games</button>
                 </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Elastic Gate</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/icYJtiaTQzk" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Clicker Fish</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/VFWWV32eb90" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Gate Floor</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/Xh6rx-Ljt8E" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Hunger Stack</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/Qk_ems7A5uA?si=mMTxL27ARfxmvqM1"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Jumping Rush</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/ctdBIk6v-tM" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Letter Tiles</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/QUehNQQ2wYE?si=WBK9PxkOWHIgpCL0"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Longest Pin</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/GAPua5GryfA?si=RZdlN8yUM8T3WZwe"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Money Bet</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/NnHYTiZHe-4?si=fxVlKXColv3FL0z8"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Orbital Hands</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/kjja0h732Qs?si=gSQbK3aE8QPrwo1U"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Photo Shots</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/GlJouE4Bv3U?si=r5PzM7LWGS34sG9l"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Rank It</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/KB5qaaVqFgE?si=7Gx9_DjUf5dKv0-A"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Pixel's Bet</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/gOJgHVr0o_A?si=VL8CKddHAISmQlEl"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Richer Hands</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/vz7hAfdjC0k?si=ltRAl080CytWWQ9N"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Recycle Management</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/D1Zv2Q0zWeI?si=z0PeAIoDgbBMsNrP"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Throw Gate</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/xpxU83av-c0?si=hn8T4l1ot0Abn-n_"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Hold And Number</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/Rj59igBERBM?si=bM7GEOZj7-l1kgj-"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4">
-                        <h4 class="text-xl font-semibold mb-2">Swipe TD</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/qJ2o6HQp5hs?si=mYjBcKmrS7wZF4Ft"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4 ">
-                        <h4 class="text-xl font-semibold mb-2">Crowd Loop</h4>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/9fWnBeMhuc0?si=yUk0IJYmok8V9KFg" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="p-4 ">
-                        <h4 class="text-xl font-semibold mb-2">Crowd Transfer</h4>
-                     
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/9O3O4H2y7m4?si=4ZSeCjGH2K5G0vuS" allowfullscreen></iframe>
-                    </div>
-                </div>
-
             </div>
-    </section>
+        </section>
+    </main>
 
-    <footer class="py-6">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
-            <p>© 2024 Ramazan Toy - All Rights Reserved</p>
+    <footer class="footer" id="contact">
+        <div class="container">
+            <h2 class="footer__title">Get in touch</h2>
+            <span class="brush-bar" aria-hidden="true"></span>
+            <p class="footer__lead">Interested in working together? Email is the fastest way to reach me.</p>
+            <a class="footer__mail" href="mailto:ramcotoy06@gmail.com">ramcotoy06@gmail.com</a>
+            <div class="footer__links">
+                <a href="https://github.com/ramazantoy" target="_blank" rel="noopener"><i
+                        class="fab fa-github"></i>GitHub</a>
+                <a href="https://linkedin.com/in/ramazantoy" target="_blank" rel="noopener"><i
+                        class="fab fa-linkedin"></i>LinkedIn</a>
+                <a href="https://store.steampowered.com/app/4236450/" target="_blank" rel="noopener"><i
+                        class="fab fa-steam"></i>Tattoo Shop Simulator</a>
+            </div>
+            <p class="footer__copy">© 2026 Ramazan Toy. All rights reserved.</p>
         </div>
     </footer>
 </body>
