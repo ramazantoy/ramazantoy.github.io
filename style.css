@@ -695,6 +695,14 @@ a {
     font-size: clamp(1.4rem, 2.6vw, 1.65rem);
 }
 
+.job__formerly {
+    margin-left: 0.35rem;
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
 .job__role {
     margin: 0.15rem 0 0.9rem;
     color: var(--red);
